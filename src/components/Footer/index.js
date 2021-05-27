@@ -6,7 +6,7 @@ const Footer = () => {
     <>
       <FooterContainer>
           <FooterWrapper>
-              <FooterP>designed and built by mdalvin.</FooterP>
+              <FooterP>designed and built by mdalvin</FooterP>
           </FooterWrapper>
       </FooterContainer>
     </>
