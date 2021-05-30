@@ -7,6 +7,11 @@ export const InputContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #1f386f;
+
+  @media screen and (max-width: 375px) {
+    padding: 0px 0px;
+    height: 290px;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -15,6 +20,12 @@ export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 375px) {
+    display: grid;
+    top: 0;
+    width: 375px;
+  }
 `;
 
 export const InputForm = styled.form`
@@ -23,6 +34,13 @@ export const InputForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 375px) {
+    padding: 0px 0px;
+    height: 130px;
+    display: grid;
+  }
+
 `;
 
 export const InputField = styled.input`
@@ -35,6 +53,12 @@ export const InputField = styled.input`
   border-radius: 20px;
   margin-right: 25px;
   padding: 0 20px;
+
+  @media screen and (max-width: 375px) {
+    margin-bottom: 20px;
+    width: 300px;
+    height: 35px;
+  }
 `;
 
 export const InputButton = styled.button`
@@ -59,4 +83,6 @@ export const InputButton = styled.button`
     font-size: 30px;
     padding-top: none;
   }
+
+
 `;

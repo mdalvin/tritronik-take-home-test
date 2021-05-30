@@ -18,6 +18,11 @@ export const WelcomeWrapper = styled.div`
   text-align: center;
   color: #fff;
   margin-bottom: 100px;
+
+  @media screen and (max-width: 375px) {
+    width: 375px;
+    height: 70px;
+  }
 `;
 
 export const WelcomeH2 = styled.h2`
@@ -25,24 +30,40 @@ export const WelcomeH2 = styled.h2`
   font-weight: 900;
   letter-spacing: 3px;
   margin-bottom: 0;
+
+  @media screen and (max-width: 375px) {
+    font-size: 30px;
+  }
 `;
 
 export const WelcomeP = styled.p`
   font-size: 22px;
   font-weight: 700;
   margin-top: 0;
+
+  @media screen and (max-width: 375px) {
+    font-size: 18px;
+  }
 `;
 
 export const ListWrapper = styled.div`
-  height: 350px;
+  height: 700px;
   padding: 50px 50px;
   margin-top: 0;
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(50px)
+  grid-template-rows: repeat()
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 375px) {
+    width: 375px;
+    height: 800px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(30px)
+    padding: 10px 10px;
+  }
 `;
 
 export const TaskTextWrapper = styled.div`
@@ -53,22 +74,41 @@ export const TaskTextWrapper = styled.div`
   margin-bottom: 0;
   margin-left: 50px;
   color: #fff;
+
+  @media screen and (max-width: 375px) {
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    height: 0px;
+  }
 `;
 
 export const TaskP = styled.p`
   font-size: 22px;
   font-weight: 700;
   margin-top: 0;
+
+  @media screen and (max-width: 375px) {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+  
+  }
 `;
 
 export const TaskCard = styled.div`
   width: 350px;
   height: 80px;
-  background-color: #fff;
+  // background-color: #fff;
   border-radius: 25px;
   border: none;
   display: flex;
   box-shadow: 5px 7px #fec14a;
+
+  @media screen and (max-width: 375px) {
+    width: 300px;
+    height: 50px;  
+  }
 `;
 
 export const TaskInfo = styled.div`
@@ -79,9 +119,15 @@ export const TaskInfo = styled.div`
 
 export const TaskTitle = styled.h2`
   font-size: 20px;
+  color: #222;
   font-weight: 600;
   margin-bottom: 0;
   margin-left: 10px;
+  text-transform: capitalize;
+
+  @media screen and (max-width: 375px) {
+    font-size: 18px;
+  }
 `;
 
 export const TaskDate = styled.p`
@@ -120,4 +166,12 @@ export const TaskButton = styled(Link)`
     color: #fec14a;
     background-color: #1f386f;
   }
+`;
+
+export const SpinnerWrapper = styled.div`
+  height: 50px;
+  width: 50px;
+  margin-left: 80px;
+  align-items: center;
+  justify-content: center;
 `;

@@ -13,7 +13,6 @@ const InputSection = () => {
   const [note, setNote] = useState("");
   const [color, setColor] = useState("");
   const url = "https://note-dot-dev-tritronik.appspot.com/note";
-  const token = "dd83aee0-2bdd-4740-b89c-611dbc9b9190";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,13 +26,7 @@ const InputSection = () => {
 
     axios
       .post(
-        url,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-        data
+        url, data, { headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" } }
       )
       .then((res) => {
         console.log(res.data);
@@ -54,13 +47,14 @@ const InputSection = () => {
               name="note"
               id="note"
               placeholder="Add new note here"
+              required
               onChange={(e) => setNote(e.target.value)}
             />
             <InputField
-              type="text"
+              type="color"
               name="color"
               id="color"
-              placeholder="Set the color here"
+              required
               onChange={(e) => setColor(e.target.value)}
             />
             <InputButton type="submit">

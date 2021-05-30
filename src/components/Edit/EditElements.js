@@ -20,7 +20,7 @@ export const FormWrap = styled.div`
   justify-content: center;
   align-text: center;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 375px) {
     height: 80%;
   }
 `;
@@ -33,7 +33,7 @@ export const Icon = styled(Link)`
   font-weight: 700;
   font-size: 50px;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 375px) {
     margin-left: 16px;
     margin-top: 8px;
   }
@@ -45,7 +45,7 @@ export const FormContent = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 375px) {
     padding: 10px;
   }
 `;
@@ -62,11 +62,11 @@ export const Form = styled.form`
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 375px) {
     padding: 32px 32px;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 375px) {
     transform: scale(0.8);
     margin-top: 0;
   }
@@ -92,6 +92,22 @@ export const FormInput = styled.input`
   margin-bottom: 32px;
   border: none;
   border-radius: 4px;
+  height: 50px;
+  width: 420px;
+  background-color: #fff;
+
+  @media screen and (max-width: 375px) {
+    width: 290px;
+  }
+`;
+
+export const FormSelect = styled.select`
+  padding: 12px 12px;
+  margin-bottom: 32px;
+  border: none;
+  border-radius: 4px;
+  text-transform: capitalize;
+  cursor: pointer;
 `;
 
 export const FormButton = styled.button`

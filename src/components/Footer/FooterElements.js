@@ -8,6 +8,10 @@ export const FooterContainer = styled.div`
     justify-content: right;
     align-items: center;
     padding: 0 100px;
+
+    @media screen and (max-width: 375px) {
+        padding: 0 60px;
+    }
 `;
 
 export const FooterWrapper = styled.footer`
@@ -15,6 +19,12 @@ export const FooterWrapper = styled.footer`
     padding-top: 10px;
     display: flex;
     text-align: right;
+
+    @media screen and (max-width: 375px) {
+        height: 70px;
+        display: flex;
+        text-align: center;     
+    }
 `;
 
 export const FooterP = styled.p`

@@ -4,10 +4,10 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import {
   ListContainer,
   ListWrapper,
+  SpinnerWrapper,
   TaskAction,
   TaskButton,
   TaskCard,
-  TaskDate,
   TaskInfo,
   TaskP,
   TaskTextWrapper,
@@ -17,23 +17,18 @@ import {
   WelcomeWrapper,
 } from "./ListElements";
 import Swal from "sweetalert2";
+import Spinner from "../Spinner";
 
 const List = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState("");
   const url = "https://note-dot-dev-tritronik.appspot.com/note";
-  const token = "8e60a5f5-d344-4d7b-8a8c-99f53e6dca44";
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
 
   useEffect(() => {
     axios
-      .get(url, null, config)
+      .get(url, { headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" } })
       .then((res) => {
-        console.log(res.data);
-        setTasks(res.data);
+        console.log(res.data.content);
+        setTasks(res.data.content);
       })
       .catch((error) => {
         console.log(error);
@@ -52,8 +47,8 @@ const List = () => {
     }).then((res) => {
       if (res.isConfirmed) {
         axios
-          .delete(url, {
-            headers: { Authorization: `Bearer ${token}` },
+          .delete(`https://note-dot-dev-tritronik.appspot.com/note?id=${id}`, {
+            headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" },
           })
           .then((res) => {
             console.log(res);
@@ -79,19 +74,20 @@ const List = () => {
           <TaskP>Your recorded notes:</TaskP>
         </TaskTextWrapper>
         <ListWrapper>
-          {/* 
-
-          {tasks.length !== 0 ? (tasks.map((task) => (
-              <TaskCard styled={{backgroundColor:`${task.color}`}}>
-                 <TaskInfo>
-                   <TaskTitle>{task.note}</TaskTitle>
-                   <TaskDate>{task.createdDate}</TaskDate>
-                 </TaskInfo>
-                 <TaskAction>
-                   <TaskButton to="/edit">
-                     <MdEdit />
-                   </TaskButton>
-                   <TaskButton
+          {tasks.length !== 0 ? (
+            tasks.map((task) => (
+              <TaskCard
+                id={task.id}
+                style={{ backgroundColor: `${task.color}` }}
+              >
+                <TaskInfo>
+                  <TaskTitle>{task.note}</TaskTitle>
+                </TaskInfo>
+                <TaskAction>
+                  <TaskButton to="/edit">
+                    <MdEdit />
+                  </TaskButton>
+                  <TaskButton
                     onClick={() => {
                       handleDelete(task.id);
                     }}
@@ -100,118 +96,13 @@ const List = () => {
                   </TaskButton>
                 </TaskAction>
               </TaskCard>
-          ))) : ("")};
-          
-          */}
-
-          <TaskCard>
-            <TaskInfo>
-              <TaskTitle>Go Shopping</TaskTitle>
-              <TaskDate>2021-05-20</TaskDate>
-            </TaskInfo>
-            <TaskAction>
-              <TaskButton to="/edit">
-                <MdEdit />
-              </TaskButton>
-              <TaskButton
-                onClick={() => {
-                  handleDelete();
-                }}
-              >
-                <MdDelete />
-              </TaskButton>
-            </TaskAction>
-          </TaskCard>
-          <TaskCard>
-            <TaskInfo>
-              <TaskTitle>Go Swimming</TaskTitle>
-              <TaskDate>2021-05-25</TaskDate>
-            </TaskInfo>
-            <TaskAction>
-              <TaskButton to="/edit">
-                <MdEdit />
-              </TaskButton>
-              <TaskButton
-                onClick={() => {
-                  handleDelete();
-                }}
-              >
-                <MdDelete />
-              </TaskButton>
-            </TaskAction>
-          </TaskCard>
-          <TaskCard>
-            <TaskInfo>
-              <TaskTitle>Go Hiking</TaskTitle>
-              <TaskDate>2021-05-30</TaskDate>
-            </TaskInfo>
-            <TaskAction>
-              <TaskButton to="/edit">
-                <MdEdit />
-              </TaskButton>
-              <TaskButton
-                onClick={() => {
-                  handleDelete();
-                }}
-              >
-                <MdDelete />
-              </TaskButton>
-            </TaskAction>
-          </TaskCard>
-          <TaskCard>
-            <TaskInfo>
-              <TaskTitle>Go Biking</TaskTitle>
-              <TaskDate>2021-05-30</TaskDate>
-            </TaskInfo>
-            <TaskAction>
-              <TaskButton to="/edit">
-                <MdEdit />
-              </TaskButton>
-              <TaskButton
-                onClick={() => {
-                  handleDelete();
-                }}
-              >
-                <MdDelete />
-              </TaskButton>
-            </TaskAction>
-          </TaskCard>
-          <TaskCard>
-            <TaskInfo>
-              <TaskTitle>Go Sleeping</TaskTitle>
-              <TaskDate>2021-05-30</TaskDate>
-            </TaskInfo>
-            <TaskAction>
-              <TaskButton to="/edit">
-                <MdEdit />
-              </TaskButton>
-              <TaskButton
-                onClick={() => {
-                  handleDelete();
-                }}
-              >
-                <MdDelete />
-              </TaskButton>
-            </TaskAction>
-          </TaskCard>
-          <TaskCard>
-            <TaskInfo>
-              <TaskTitle>Go Cooking</TaskTitle>
-              <TaskDate>2021-05-30</TaskDate>
-            </TaskInfo>
-            <TaskAction>
-              <TaskButton to="/edit">
-                <MdEdit />
-              </TaskButton>
-              <TaskButton
-                onClick={() => {
-                  handleDelete();
-                }}
-              >
-                <MdDelete />
-              </TaskButton>
-            </TaskAction>
-          </TaskCard>
+            ))
+          ) : (
+            <SpinnerWrapper>
+              <Spinner />
+            </SpinnerWrapper>
+          )}
+          ;
         </ListWrapper>
       </ListContainer>
     </>
