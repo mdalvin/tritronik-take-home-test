@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { MdAdd } from "react-icons/md";
+import Swal from "sweetalert2";
 import {
   InputButton,
   InputContainer,
@@ -29,7 +30,11 @@ const InputSection = () => {
         url, data, { headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" } }
       )
       .then((res) => {
-        console.log(res.data);
+        Swal.fire(
+          'Awesome!',
+          'Your note has been saved!',
+          'success'
+        );
         return window.location.reload();
       })
       .catch((error) => {

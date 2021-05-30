@@ -40,7 +40,6 @@ export const InputForm = styled.form`
     height: 130px;
     display: grid;
   }
-
 `;
 
 export const InputField = styled.input`
@@ -58,6 +57,7 @@ export const InputField = styled.input`
     margin-bottom: 20px;
     width: 300px;
     height: 35px;
+    margin-left: 25px;
   }
 `;
 
@@ -84,5 +84,11 @@ export const InputButton = styled.button`
     padding-top: none;
   }
 
-
+  @media screen and (max-width: 375px) {
+    width: 300px;
+    height: 35px;
+    border-radius: 25px;
+    font-size: 20px;
+    margin-left: 25px;
+  }
 `;

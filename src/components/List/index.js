@@ -56,6 +56,14 @@ const List = () => {
             return window.location.reload();
           });
         Swal.fire("Done!", "This note has been deleted.", "success");
+      } else if (res.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: "Cancelled",
+          icon: "error",
+          text: "Relax, your note is still there",
+          confirmButtonColor: "#1f386f",
+          confirmButtonText: "Thank God !",
+        });
       }
     });
   };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import {
   Container,
   Form,
@@ -16,8 +17,8 @@ import {
 
 const Edit = () => {
   const [id, setId] = useState("");
-  const [newNote, setNewNote] = useState("");
-  const [newColor, setNewColor] = useState("");
+  const [note, setNote] = useState("");
+  const [color, setColor] = useState("");
   const [notes, setNotes] = useState("");
   const url = "https://note-dot-dev-tritronik.appspot.com/note";
 
@@ -34,10 +35,12 @@ const Edit = () => {
   }, []);
 
   const handleSubmit = (e) => {
+    e.preventDefault()
+
     const data = {
       id: id,
-      note: newNote,
-      color: newColor,
+      note: note,
+      color: color,
     };
 
     axios
@@ -45,7 +48,12 @@ const Edit = () => {
         headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" },
       })
       .then((res) => {
-        console.log(res.data.content);
+        Swal.fire(
+          'Done!',
+          'Your changes has been saved!',
+          'success'
+        );
+        return window.location.href="/";
       })
       .catch((error) => {
         console.log(error);
@@ -87,7 +95,7 @@ const Edit = () => {
                 id="note"
                 name="note"
                 placeholder="Edit note here"
-                onChange={(e) => setNewNote(e.target.value)}
+                onChange={(e) => setNote(e.target.value)}
                 required
               />
               <FormLabel htmlFor="color">New color</FormLabel>
@@ -95,8 +103,7 @@ const Edit = () => {
                 type="color"
                 id="color"
                 name="color"
-                placeholder="Edit color here"
-                onChange={(e) => setNewColor(e.target.value)}
+                onChange={(e) => setColor(e.target.value)}
                 required
               />
               <FormButton type="submit">Save</FormButton>
