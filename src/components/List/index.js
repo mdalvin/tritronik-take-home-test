@@ -25,7 +25,7 @@ const List = () => {
 
   useEffect(() => {
     axios
-      .get(url, { headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" } })
+      .get(url, { headers: { token: "5e2767bb-1518-4d0d-8c36-98536d54a7a8" } })
       .then((res) => {
         console.log(res.data.content);
         setTasks(res.data.content);
@@ -48,7 +48,7 @@ const List = () => {
       if (res.isConfirmed) {
         axios
           .delete(`https://note-dot-dev-tritronik.appspot.com/note?id=${id}`, {
-            headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" },
+            headers: { token: "5e2767bb-1518-4d0d-8c36-98536d54a7a8" },
           })
           .then((res) => {
             console.log(res);

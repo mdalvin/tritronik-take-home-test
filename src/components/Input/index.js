@@ -27,7 +27,7 @@ const InputSection = () => {
 
     axios
       .post(
-        url, data, { headers: { token: "a0fd26ac-c3e8-488e-b90b-22bc97e73a58" } }
+        url, data, { headers: { token: "5e2767bb-1518-4d0d-8c36-98536d54a7a8" } }
       )
       .then((res) => {
         Swal.fire(
